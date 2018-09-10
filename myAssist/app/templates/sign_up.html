@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <form action="" class="form form-horizontal" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.fullname.label }}
+            {{ form.fullname(class='form-control', autocorrect='off', autocomplete='off') }}
+            {% for error in form.fullname.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class='form-control', autocorrect='off', autocomplete='off') }}
+            {% for error in form.email.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label }}
+            {{ form.password(class='form-control', autocorrect='off', autocomplete='off') }}
+            {% for error in form.password.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.confirm_password.label }}
+            {{ form.confirm_password(class='form-control', autocorrect='off', autocomplete='off') }}
+            {% for error in form.confirm_password.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class='btn btn-success') }}
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already have an account? <a href="{{ url_for('sign_in') }}" class="ml-2">Sign In</a>
+        </small>
+    </div>
+{% endblock page_content %}
